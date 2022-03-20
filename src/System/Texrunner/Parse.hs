@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards   #-}
-
+{-# LANGUAGE DeriveAnyClass    #-}
 ----------------------------------------------------------------------------
 -- |
 -- Module      :  System.Texrunner.Parse
@@ -36,6 +36,7 @@ import           Data.ByteString.Char8            (ByteString, cons, pack)
 import qualified Data.ByteString.Char8            as B
 import           Data.Maybe
 import           Data.Monoid
+import           Data.Semigroup
 
 ------------------------------------------------------------------------
 -- Boxes
@@ -88,7 +89,7 @@ data TexLog = TexLog
   , numPages  :: Maybe Int
   , texErrors :: [TexError]
   -- , rawLog    :: ByteString
-  } deriving Show
+  } deriving (Show,Semigroup)
 
 data TexInfo = TexInfo
   { texCommand      :: Maybe ByteString
